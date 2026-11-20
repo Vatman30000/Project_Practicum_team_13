@@ -1,0 +1,29 @@
+{
+  "target": "rented_bike_count",
+  "random_state": 42,
+  "clip_negative": true,
+  "evaluate_test": false,
+  "split": {
+    "train_frac": 0.70,
+    "val_frac": 0.15,
+    "keep_non_functioning": true,
+    "cv_splits": 4,
+    "cv_gap": 24
+  },
+  "features": {
+    "day_of_week": true,
+    "month": true,
+    "is_weekend": true,
+    "hour_cyclic": true,
+    "hour_peak_distance": false
+  },
+  "model": {
+    "name": "ridge"
+  },
+  "tuning": {
+    "method": "none",
+    "param_distributions": {},
+    "n_iter": 10,
+    "scoring": "neg_root_mean_squared_error"
+  }
+}
