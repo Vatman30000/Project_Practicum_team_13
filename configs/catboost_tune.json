@@ -1,0 +1,33 @@
+{
+  "target": "rented_bike_count",
+  "random_state": 42,
+  "clip_negative": true,
+  "evaluate_test": false,
+  "split": {
+    "train_frac": 0.70,
+    "val_frac": 0.15,
+    "keep_non_functioning": true,
+    "cv_splits": 4,
+    "cv_gap": 24
+  },
+  "features": {
+    "day_of_week": true,
+    "month": true,
+    "is_weekend": true,
+    "hour_cyclic": true,
+    "hour_peak_distance": false
+  },
+  "model": {
+    "name": "catboost"
+  },
+  "tuning": {
+    "method": "random",
+    "n_iter": 8,
+    "scoring": "neg_root_mean_squared_error",
+    "param_distributions": {
+      "model__iterations": [300, 500, 800],
+      "model__learning_rate": [0.03, 0.05, 0.1],
+      "model__depth": [6, 8, 10]
+    }
+  }
+}
